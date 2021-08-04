@@ -1,0 +1,15 @@
+<div class="row">
+  <h1>Hi, <%= @client.user.login %></h1>
+  <div class="dropdown-divider mb-3 border-light border-2"></div>
+</div>
+<div class="row shadow p-3 mb-5 bg-body rounded">
+  <div class="col-3 border-end">
+    <ul class="list-group">
+      <% @repos.each do |repo| %>
+        <a href="javascript:void(0);" class="list-group-item repo-list text-truncate" data-id="<%= repo.id %>"><%= repo.full_name %></a>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-9 repo-details">
+  </div>
+</div>

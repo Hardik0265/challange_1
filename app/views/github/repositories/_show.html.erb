@@ -1,0 +1,27 @@
+<h4><%= @repository_name %></h4>
+<hr/>
+<% @authors.each do |author| %>
+  <div class="card shadow p-3 mb-5 bg-body rounded">
+    <div class="row ps-2 fs-4">
+      <div class="col-12">
+        <%= author.author.login %>
+      </div>
+    </div>
+    <div class="row ps-2 fs-6">
+      <div class="col-2">
+        <%= "#{pluralize(author.weeks.pluck(:c).sum, 'Commit')}" %>
+      </div>
+      <div class="col-2 text-success">
+        <%= "#{author.weeks.pluck(:a).sum} ++" %>
+      </div>
+      <div class="col-2 text-danger">
+        <%= "#{author.weeks.pluck(:d).sum} --" %>
+      </div>
+    </div>
+    <hr/>
+    <%= line_chart [
+      {name: 'Commits', data: author.weeks.pluck(:w, :c).map { |data| [Time.at(data.first).to_date, data.last] }},
+      {name: 'Added', data: author.weeks.pluck(:w, :a).map { |data| [Time.at(data.first).to_date, data.last] }},
+      {name: 'Removed', data: author.weeks.pluck(:w, :d).map { |data| [Time.at(data.first).to_date, data.last] }}] %>
+  </div>
+<% end %>
