@@ -1,24 +1,34 @@
-# README
+# Challenge 1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting started
 
-Things you may want to cover:
+### Ruby version
 
-* Ruby version
+Install the ruby version specified in the Gemfile.  It is recommended to use a ruby version manager
+so you can switch version when needed.
 
-* System dependencies
+    brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
 
-* Configuration
+To install ruby 2.7.2
 
-* Database creation
+    rbenv install 2.7.2
 
-* Database initialization
+### System dependencies
 
-* How to run the test suite
+#### PostgreSql
 
-* Services (job queues, cache servers, search engines, etc.)
+To install PostgreSql
 
-* Deployment instructions
+    brew install postgresql
 
-* ...
+### Database creation
+
+To create your development database run:
+
+    rails db:create ENV=development
+
+### Database initialization
+
+To migrate your development database run:
+
+    rails db:migrate ENV=development
